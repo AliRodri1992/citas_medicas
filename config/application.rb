@@ -10,6 +10,17 @@ module CitaMedica
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.generators do |g|
+      g.assets  false
+      g.helper false
+      g.stylesheets false
+    end
+
+    config.active_record.default_timezone = :local
+
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+    config.time_zone = 'Mexico City'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
